@@ -38,11 +38,11 @@ var Person = function (name, age, job) {
 
 var person1 = new Person("Veronica Diaz", 23, "Senior Software Engineer");
 
-// person1.exercise();
-// console.log(person1); //PRINTS "Veronica Diaz is struggling with JavaScript"
+person1.exercise();
+console.log(person1); //PRINTS "Veronica Diaz is struggling with JavaScript"
 
-// person1.fetchJob();
-// console.log(person1); //PRINTS "Veronica Diaz is a Senior Software Engineer"
+person1.fetchJob();
+console.log(person1); //PRINTS "Veronica Diaz is a Senior Software Engineer"
 
 var Programmer = function (name, age, job, language) {
   Person.call(this, name, job, age);
@@ -55,7 +55,7 @@ var Programmer = function (name, age, job, language) {
     this.busy = true;
   };
   this.learnLanguage = function (language) {
-    this.language.push("Python");
+    this.language.push(language);
   };
   this.listLanguage = function () {
     console.log(this.language);
@@ -69,5 +69,11 @@ Programmer.prototype.offerNewTask = function () {
   }
 };
 
-var person2 = new Programmer("Peter Parker", 23, "HTML, CSS , JavaScript");
-console.log(person2.offerNewTask()); // PRINTS "Peter Parker can't accept any new tasks right now.undefined"
+var person2 = new Programmer("Peter Parker", 23, "Front-End Developer", [
+  "HTML",
+  "CSS",
+  "JavaScript",
+]);
+console.log(person2.offerNewTask()); // PRINTS "Peter Parker can't accept any new tasks right now."
+person2.learnLanguage("C++"); // Adds "C++" to Language Learned by Programmer
+person2.listLanguage(); // PRINTS "[ 'HTML', 'CSS', 'JavaScript', 'C++' ]"
